@@ -7,10 +7,51 @@
         <title>cursoLit</title>
     </head>
     <body>
-        <h1> Curso Lit de Escuela IT</h1>
+        <dile-nav>
+            <h2 slot="title">Menu DileNav</h2>
+            <dile-menu-hamburger slot="menu">
+                <nav slot="menu">
+                  <p><a href="one.html">Link one</a></p>
+                  <p><a href="two.html">Link two</a></p>
+                </nav>
+              </dile-menu-hamburger>
+          </dile-nav>
+        <section>
+        <dile-tabs id="select" attrForSelected="name" selected="users" selectorId="tabs">
+            <dile-tab name="users">Users</dile-tab>
+            <dile-tab name="posts">Posts</dile-tab>
+            <dile-tab name="articles">Articles</dile-tab>
+          </dile-tabs>
+        </section>
+
+        <section>
+            <dile-pages selected="users" attrforselected="name" selectorId="tabs">
+                <div name="users">
+                  <h1> Curso Lit de Escuela IT </h1>
+                  <h2>Page 1</h2>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde excepturi atque, et quaerat vero saepe maiores, maxime dolore officiis earum cumque temporibus tenetur, possimus deserunt magni itaque! Reiciendis, assumenda quo?</p>
+                </div>
+                <div name="posts">
+                  <h2> Vite con Lit </h2>
+                  <h2>Page 2</h2>
+                  <ul>
+                    <li>item 1</li>
+                    <li>item 2</li>
+                    <li>item 3</li>
+                  </ul>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde excepturi atque, et quaerat vero saepe maiores, maxime dolore officiis earum cumque temporibus tenetur, possimus deserunt magni itaque! Reiciendis, assumenda quo?</p>
+                </div>
+                <div name="articles">
+                  <h2>Page three</h2>
+                  <p>Just another page</p>
+                </div>
+              </dile-pages>
+        </section>
+
+        
         <dw-message></dw-message>
         <dw-message msg="Otro mensaje"></dw-message>
-
-        <script src="index.js" type="module"></script>
+        
+        <script src="src/main.js" type="module"></script>
     </body>
 </html>

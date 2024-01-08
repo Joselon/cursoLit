@@ -1,0 +1,22 @@
+body {
+    margin:0;
+    background-color: grey;
+    --dile-nav-background-color:#900;
+    --dile-tab-text-color: #ccc;
+    --dile-tab-background-color: transparent;
+    --dile-tab-selected-text-color: #910;
+    --dile-tab-selected-background-color: transparent;
+    --dile-tab-selected-line-color: #910;
+    --dile-hamburger-padding-x: 0;
+    --dile-hamburger-color: #fff;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 1rem;
+    margin:0;
+}
+
+section {
+    margin: 2rem 1rem;
+}

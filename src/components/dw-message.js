@@ -4,11 +4,11 @@ class DwMessage extends LitElement {
     static styles = css`
         :host {
             display:block;
-            border:1px solid red;
+            border:1px solid #900;
             padding: 10px;
         }
         div {
-            background-color:red;
+            background-color:#900;
         }
     `
 
