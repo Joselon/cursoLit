@@ -8,26 +8,42 @@ class DwMessage extends LitElement {
             padding: 10px;
         }
         div {
+            display: none;
             background-color:#900;
+        }
+
+        :host([show]) div {
+            display:block;
         }
     `
 
     static properties = {
-        msg : {type: String},
+        msg: {
+            type: String,
+            attribute: 'message',
+            state: false,
+        },
+        show: {
+            type: Boolean,
+            reflect: true
+        }
     }
 
-    constructor(){
+    constructor() {
         super();
         this.msg = "Nuevo componente Lit";
+        this.show = false;
+
     }
-    render(){
-        return html`<div>${this.msg}</div>
-        <button @click=${this.changeMessage}>Click!!</button>
+    render() {
+        return html`
+        <div>${this.msg}</div>
+        <button @click=${this.toogle}> ${this.show ? 'Ocultar' : 'Mostrar'}</button>
         `;
     }
 
-    changeMessage(){
-        this.msg = "Mensaje cambiado con el botón";
+    toogle() {
+        this.show = !this.show;
     }
 }
 
