@@ -21,26 +21,19 @@ export class EitTodoList extends LitElement {
     ];
  
     static properties = {
-        loggedIn: { type: Boolean},
-        role: {type: String}
+        completed: { type: Boolean},
     }
 
     constructor(){
         super();
-        this.loggedIn = false;
-        this.role = 'premium';
+        this.completed = false;
     }
     render() {
         return html`
-            <button @click=${this.changeLoggedIn}> Login/Logout </button>
-            ${this.loggedIn 
-                ? html`
-                ${this.sayHello(this.role)}
-                ${this.headingTemplate}
-                <eit-todo-search></eit-todo-search>
-                ${this.bodyTemplate}
-                `
-                : 'No está logueado'
+            <button @click=${this.changeCompleted}>  Completar ${icons.done}</button>
+            ${this.headingTemplate}
+            <eit-todo-search></eit-todo-search>
+            ${this.bodyTemplate}
             }
         `;
     }
@@ -54,25 +47,19 @@ export class EitTodoList extends LitElement {
     get bodyTemplate() {
         return html`
         <div>
-        ${icons.done}
+        ${this.completed
+            ? icons.checked
+            : icons.unchecked
+        }
         </div>
     `;
     }
 
-    changeLoggedIn() {
-        this.loggedIn = !this.loggedIn;
+    changeCompleted() {
+        this.completed = !this.completed;
     }
 
-    sayHello(role) {
-        switch(role) {
-            case 'administrator':
-                return html`Hola <b>Administrador</b>`;
-            case 'premium':
-                return html`Hola usuario <i>Premium</i>`;
-            default:
-                return 'Hola usuario';
-        }
-    }
+
 }
 
 customElements.define('eit-todo-list', EitTodoList)
