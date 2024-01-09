@@ -34,7 +34,6 @@ export class EitTodoList extends LitElement {
             ${this.headingTemplate}
             <eit-todo-search></eit-todo-search>
             ${this.bodyTemplate}
-            }
         `;
     }
 
