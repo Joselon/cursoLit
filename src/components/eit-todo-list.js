@@ -1,9 +1,8 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css } from 'lit';
 import { icons } from '../libs/icons.js';
-import { EitTodoSearch } from "./eit-todo-search.js";
+import  './eit-todo-search.js';
 
 export class EitTodoList extends LitElement {
-
     static styles = [
         css`
             :host {
@@ -20,12 +19,29 @@ export class EitTodoList extends LitElement {
             }
         `
     ];
+ 
+    static properties = {
+        loggedIn: { type: Boolean},
+        role: {type: String}
+    }
 
+    constructor(){
+        super();
+        this.loggedIn = false;
+        this.role = 'premium';
+    }
     render() {
         return html`
-            ${this.headingTemplate}
-            <eit-todo-search></eit-todo-search>
-            ${this.bodyTemplate}
+            <button @click=${this.changeLoggedIn}> Login/Logout </button>
+            ${this.loggedIn 
+                ? html`
+                ${this.sayHello(this.role)}
+                ${this.headingTemplate}
+                <eit-todo-search></eit-todo-search>
+                ${this.bodyTemplate}
+                `
+                : 'No está logueado'
+            }
         `;
     }
 
@@ -41,6 +57,21 @@ export class EitTodoList extends LitElement {
         ${icons.done}
         </div>
     `;
+    }
+
+    changeLoggedIn() {
+        this.loggedIn = !this.loggedIn;
+    }
+
+    sayHello(role) {
+        switch(role) {
+            case 'administrator':
+                return html`Hola <b>Administrador</b>`;
+            case 'premium':
+                return html`Hola usuario <i>Premium</i>`;
+            default:
+                return 'Hola usuario';
+        }
     }
 }
 
