@@ -5,6 +5,7 @@ import '@dile/dile-menu-hamburger/dile-menu-hamburger.js';
 import '@dile/dile-selector/dile-selector.js';
 import '@dile/dile-selector/dile-selector-item.js';
 import './components/dw-message.js';
+import './components/eit-todo-list.js';
 import './styles.css';
 
 document.getElementById("selector").addEventListener('dile-selected-changed', function () {

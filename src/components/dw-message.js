@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 
-class DwMessage extends LitElement {
+export class DwMessage extends LitElement {
     static styles = css`
         :host {
             display:block;
