@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { icons } from '../libs/icons.js';
-import  './eit-todo-search.js';
+import './eit-todo-search.js';
 
 export class EitTodoList extends LitElement {
     static styles = [
@@ -17,16 +17,45 @@ export class EitTodoList extends LitElement {
                 background-color:#eee;
                 padding: 1rem
             }
+            ul {
+                margin: 1rem 0;
+                padding: 0;
+            }
+            li {
+                display: flex;
+                align-items: center;
+                list-style-type:none;
+                margin-bottom: 0.8rem;
+            }
+
+            li span {
+                margin-left: 0.5rem;
+            }
         `
     ];
- 
+
     static properties = {
-        completed: { type: Boolean},
+        completed: { type: Boolean },
+        todoItems: { type: Array },
     }
 
-    constructor(){
+    constructor() {
         super();
         this.completed = false;
+        this.todoItems = [
+            {
+                title: 'Comprita',
+                completed: false
+            },
+            {
+                title: 'Llamar a mamá',
+                completed: false
+            },
+            {
+                title: 'Descongelar carne',
+                completed: true
+            },
+        ];
     }
     render() {
         return html`
@@ -45,11 +74,22 @@ export class EitTodoList extends LitElement {
 
     get bodyTemplate() {
         return html`
+        <ul>
+            ${this.todoItems.map((todoItem) => html`
+                <li>
+                ${todoItem.completed
+                ? icons.checked
+                : icons.unchecked
+                }
+                <span>${todoItem.title}</span>
+                </li>
+            `)}
+        </ul>        
         <div>
         ${this.completed
-            ? icons.checked
-            : icons.unchecked
-        }
+                ? icons.checked
+                : icons.unchecked
+            }
         </div>
     `;
     }
