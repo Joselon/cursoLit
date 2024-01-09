@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { icons } from '../libs/icons.js';
 import './eit-todo-search.js';
+import { WiredButton } from 'wired-elements/lib/wired-button.js';
 
 export class EitTodoList extends LitElement {
     static styles = [
@@ -59,7 +60,7 @@ export class EitTodoList extends LitElement {
     }
     render() {
         return html`
-            <button @click=${this.changeCompleted}>  Completar ${icons.done}</button>
+            <wired-button @click=${this.changeCompleted}>Completar ${icons.done}</wired-button>
             ${this.headingTemplate}
             <eit-todo-search></eit-todo-search>
             ${this.bodyTemplate}
