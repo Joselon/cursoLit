@@ -45,25 +45,25 @@ export class EitTodoList extends LitElement {
         this.completed = false;
         this.todoItems = [
             {
-                title: 'Comprita',
+                title: 'Aplicar botón "Completar" a todos los elementos',
                 completed: false
             },
             {
-                title: 'Llamar a mamá',
+                title: 'Implementar búsqueda de elementos',
                 completed: false
             },
             {
-                title: 'Descongelar carne',
+                title: 'Empezar el curso de Lit',
                 completed: true
             },
         ];
     }
     render() {
         return html`
-            <wired-button @click=${this.changeCompleted}>Completar ${icons.done}</wired-button>
             ${this.headingTemplate}
             <eit-todo-search></eit-todo-search>
             ${this.bodyTemplate}
+            <wired-button @click=${this.changeCompleted}>Completar ${icons.done}</wired-button>
         `;
     }
 

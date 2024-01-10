@@ -1,8 +1,9 @@
 import { LitElement, html, css } from 'lit';
 import { WiredButton } from 'wired-elements/lib/wired-button.js';
 import { WiredCard } from 'wired-elements/lib/wired-card.js';
-import '@dile/dile-input/dile-input';
 import { WiredSlider } from 'wired-elements/lib/wired-slider.js';
+import '@dile/dile-input/dile-input.js';
+
 
 export class EitCounter extends LitElement {
     static styles = [
@@ -50,11 +51,11 @@ export class EitCounter extends LitElement {
         quantity: {
             type: Number,
         },
-    }
+    };
 
     constructor() {
         super();
-        this.counter = 10;
+        this.counter = 0;
         this.quantity = 10;
     }
 
@@ -64,7 +65,7 @@ export class EitCounter extends LitElement {
                 <slot></slot>
                 <p class="contador">${this.counter}</p>
                 <p>
-                    <dile-input id="quantity" type="number" value="${this.quantity}" label="Cantidad"></dile-input>
+                <dile-input id="quantity" type="number" value="${this.quantity}" label="Cantidad"></dile-input>
                 </p>
                 <p>
                     <wired-slider 
