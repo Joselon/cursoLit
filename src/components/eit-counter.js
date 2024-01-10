@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { WiredButton } from 'wired-elements/lib/wired-button.js';
-import { WiredCard } from 'wired-elements/lib/wired-card.js';
+//import { WiredCard } from 'wired-elements/lib/wired-card.js';
+import { WiredCard } from 'wired-elements';
 import { WiredSlider } from 'wired-elements/lib/wired-slider.js';
 import '@dile/dile-input/dile-input.js';
 

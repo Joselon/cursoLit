@@ -15,6 +15,7 @@ body {
     --dile-selector-padding-y: 1rem;
     --dile-selector-icon-color: var(--dile-nav-background-color);
     --dile-selector-selected-background-color: var(--dile-nav-background-color);
+    --eit-switch-on-state-color: green;
 }
 
 a {
@@ -35,4 +36,5 @@ section {
 
 footer {
     background-color: rgb(73, 73, 72);
+    padding: 1rem;
 }

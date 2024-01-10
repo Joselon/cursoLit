@@ -3,7 +3,7 @@ import { LitElement, html, css } from 'lit';
 export class EitSwitch extends LitElement {
     static styles = [
         css`
-                        :host {
+            :host {
                 display: inline-block;
             }
             section {
@@ -21,12 +21,12 @@ export class EitSwitch extends LitElement {
                 left: 0px;
                 position: relative;
                 border-radius: 50%;
-                background-color: #910;
+                background-color: var(--eit-switch-off-state-color,#910);
                 transition: all 0.2s linear;
             }
             :host([checked]) span {
                 left: 32px;
-                background-color: #69f;
+                background-color: var(--eit-switch-on-state-color,#69f);
             }
         `
     ];
