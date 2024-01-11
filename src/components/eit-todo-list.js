@@ -31,6 +31,11 @@ export class EitTodoList extends LitElement {
 
             li span {
                 margin-left: 0.5rem;
+                margin-right: 0.5rem;
+            }
+
+            eit-switch {
+                scale:0.5;
             }
         `
     ];
@@ -47,8 +52,12 @@ export class EitTodoList extends LitElement {
         this.completed = false;
         this.todoItems = [
             {
-                title: 'Aplicar botón "Completar" a todos los elementos',
+                title: 'Agregar tareas',
                 completed: false
+            },
+            {
+                title: 'Aplicar botón "Completar" a todos los elementos',
+                completed: true
             },
             {
                 title: 'Implementar búsqueda de elementos',
@@ -83,8 +92,8 @@ export class EitTodoList extends LitElement {
                 ? icons.checked
                 : icons.unchecked
             }
-                <span>${todoItem.title}</span>
-                <p> <eit-switch @eit-switch-changed=${this.changeItemCompleted(todoItem)}>${icons.done}</eit-switch></p>
+                <span>${todoItem.title} </span>
+                <eit-switch @eit-switch-changed=${this.changeItemCompleted(todoItem)} ?checked=${todoItem.completed}>${icons.done}</eit-switch>
                 </li>
             `)}
         </ul>        

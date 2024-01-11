@@ -61,7 +61,7 @@ export class EitCounter extends LitElement {
         super();
         this.counter = 0;
         this.quantity = 1;
-        this.active = false;
+        this.active = true;
     }
 
     render() {
@@ -83,8 +83,8 @@ export class EitCounter extends LitElement {
                         class= "wired-rendered"
                     ></wired-slider>
                 </p>
-                <wired-button @click=${this.increment}>Incrementar</wired-button>
-                <wired-button @click=${this.decrement} class="decrement">Decrementar</wired-button>
+                <wired-button @click=${this.increment} ?disabled=${!this.active}>Incrementar</wired-button>
+                <wired-button @click=${this.decrement} class="decrement" ?disabled=${!this.active}>Decrementar</wired-button>
             </wired-card>
         `;
     }
@@ -94,11 +94,15 @@ export class EitCounter extends LitElement {
     }
 
     increment() {
-        this.counter += parseInt(this.quantity);
+        if (this.active) {
+            this.counter += parseInt(this.quantity);
+        }
     }
 
     decrement() {
-        this.counter -= parseInt(this.quantity);
+        if (this.active) {
+            this.counter -= parseInt(this.quantity);
+        }
     }
 
     changeActive() {
