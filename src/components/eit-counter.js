@@ -10,7 +10,8 @@ export class EitCounter extends LitElement {
     static styles = [
         css`
             :host {
-                display: inline-block;
+                display: flex;
+                align-items: center;
             }
             h2 {
                 color: red;
@@ -23,6 +24,7 @@ export class EitCounter extends LitElement {
                 width: 55px;
                 font-size: 1em;
                 padding: 0.5em;
+                --dile-input-text-align: center;
                 --dile-input-label-color: #910;
             }
             wired-button {
@@ -34,7 +36,13 @@ export class EitCounter extends LitElement {
             wired-card {
                 margin: 1em;
                 padding: 1em;
-                text-align: center;
+            }
+
+            wired-card p {
+                display:flex;
+                justify-content: space-around;
+                align-items: center;
+                
             }
             @media(min-width: 500px) {
                 .contador {
@@ -69,10 +77,14 @@ export class EitCounter extends LitElement {
             <wired-card elevation="3">
                 <p><eit-switch ?checked=${this.active}></eit-switch>
                 <wired-button @click=${this.changeActive}>Activar/ Desactivar</wired-button></p>
-                <slot></slot>
+                <p><slot></slot></p>
                 <p class="contador">${this.counter}</p>
                 <p>
-                <dile-input id="quantity" type="number" value="${this.quantity}" label="Cantidad"></dile-input>
+                    <wired-button @click=${this.increment} ?disabled=${!this.active}>Incrementar</wired-button>
+                    <wired-button @click=${this.decrement} class="decrement" ?disabled=${!this.active}>Decrementar</wired-button>
+                </p>
+                <p>
+                    <dile-input id="quantity" type="number" value="${this.quantity}" label="Cantidad" disabled></dile-input>
                 </p>
                 <p>
                     <wired-slider 
@@ -80,11 +92,10 @@ export class EitCounter extends LitElement {
                         min="1" 
                         max="100" 
                         @change=${this.doChangeQuantity}
-                        class= "wired-rendered"
+                        ?disabled=${!this.active}
                     ></wired-slider>
                 </p>
-                <wired-button @click=${this.increment} ?disabled=${!this.active}>Incrementar</wired-button>
-                <wired-button @click=${this.decrement} class="decrement" ?disabled=${!this.active}>Decrementar</wired-button>
+                
             </wired-card>
         `;
     }
