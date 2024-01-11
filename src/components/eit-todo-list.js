@@ -1,7 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { icons } from '../libs/icons.js';
 import './eit-todo-search.js';
-import { WiredButton } from 'wired-elements/lib/wired-button.js';
 
 export class EitTodoList extends LitElement {
     static styles = [
@@ -9,6 +8,7 @@ export class EitTodoList extends LitElement {
             :host {
                 display: block;
                 padding: 1rem;
+                --eit-switch-on-state-color: #cccccc;
             }
 
             h1 {
@@ -37,7 +37,9 @@ export class EitTodoList extends LitElement {
 
     static properties = {
         completed: { type: Boolean },
-        todoItems: { type: Array },
+        todoItems: { 
+            type: Array,
+        },
     }
 
     constructor() {
@@ -63,7 +65,6 @@ export class EitTodoList extends LitElement {
             ${this.headingTemplate}
             <eit-todo-search></eit-todo-search>
             ${this.bodyTemplate}
-            <wired-button @click=${this.changeCompleted}>Completar ${icons.done}</wired-button>
         `;
     }
 
@@ -81,8 +82,9 @@ export class EitTodoList extends LitElement {
                 ${todoItem.completed
                 ? icons.checked
                 : icons.unchecked
-                }
+            }
                 <span>${todoItem.title}</span>
+                <p> <eit-switch @eit-switch-changed=${this.changeItemCompleted(todoItem)}>${icons.done}</eit-switch></p>
                 </li>
             `)}
         </ul>        
@@ -90,16 +92,22 @@ export class EitTodoList extends LitElement {
         ${this.completed
                 ? icons.checked
                 : icons.unchecked
-            }
+            } Nueva tarea
+        <p><eit-switch @eit-switch-changed=${this.changeCompleted}>${icons.done}</eit-switch></p>
         </div>
     `;
     }
 
-    changeCompleted() {
-        this.completed = !this.completed;
+    changeCompleted(e) {
+        this.completed = e.detail.checked;
     }
 
-
+    changeItemCompleted(item) {
+        return () => {
+            item.completed = !item.completed;
+            this.requestUpdate();
+        }
+    }
 }
 
 customElements.define('eit-todo-list', EitTodoList)

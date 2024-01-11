@@ -44,13 +44,22 @@ export class EitSwitch extends LitElement {
     render() {
         return html`
          <section @click=${this.toggle}>
-                <span></span>
+                <span></span><slot></slot>
             </section>
         `;
     }
 
     toggle() {
         this.checked = !this.checked;
+        this.dispatchEvent(new CustomEvent('eit-switch-changed',{
+            bubbles: true,
+            composed: true,
+            detail:{
+                checked: this.checked
+            }
+        }))
     }
+
+
 }
 customElements.define('eit-switch', EitSwitch);

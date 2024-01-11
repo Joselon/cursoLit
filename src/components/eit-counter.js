@@ -20,7 +20,7 @@ export class EitCounter extends LitElement {
                 font-size: 1.5em;
             }
             dile-input {
-                width: 50px;
+                width: 55px;
                 font-size: 1em;
                 padding: 0.5em;
                 --dile-input-label-color: #910;
@@ -52,17 +52,23 @@ export class EitCounter extends LitElement {
         quantity: {
             type: Number,
         },
+        active: {
+            type: Boolean,
+        }
     };
 
     constructor() {
         super();
         this.counter = 0;
-        this.quantity = 10;
+        this.quantity = 1;
+        this.active = false;
     }
 
     render() {
         return html`
             <wired-card elevation="3">
+                <p><eit-switch ?checked=${this.active}></eit-switch>
+                <wired-button @click=${this.changeActive}>Activar/ Desactivar</wired-button></p>
                 <slot></slot>
                 <p class="contador">${this.counter}</p>
                 <p>
@@ -70,10 +76,11 @@ export class EitCounter extends LitElement {
                 </p>
                 <p>
                     <wired-slider 
-                        value="10" 
+                        value="1" 
                         min="1" 
-                        max="20" 
+                        max="100" 
                         @change=${this.doChangeQuantity}
+                        class= "wired-rendered"
                     ></wired-slider>
                 </p>
                 <wired-button @click=${this.increment}>Incrementar</wired-button>
@@ -92,6 +99,10 @@ export class EitCounter extends LitElement {
 
     decrement() {
         this.counter -= parseInt(this.quantity);
+    }
+
+    changeActive() {
+        this.active = !this.active;
     }
 }
 customElements.define('eit-counter', EitCounter);
