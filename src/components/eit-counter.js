@@ -18,7 +18,11 @@ export class EitCounter extends LitElement {
             }
             .contador {
                 color: blue;
-                font-size: 1.5em;
+                background-color: white;
+                border-radius: 25px;
+                font-size: 2.5em;
+                margin-inline-start: 1em;
+                margin-inline-end: 1em;
             }
             dile-input {
                 width: 55px;
@@ -42,11 +46,18 @@ export class EitCounter extends LitElement {
                 display:flex;
                 justify-content: space-around;
                 align-items: center;
-                
             }
-            @media(min-width: 500px) {
+
+            wired-slider {
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+            
+            @media(max-width: 500px) {
                 .contador {
                     font-size: 3em;
+                    margin-inline-start: 1em;
+                    margin-inline-end: 1em
                 }
             }
         `
@@ -75,7 +86,7 @@ export class EitCounter extends LitElement {
     render() {
         return html`
             <wired-card elevation="3">
-                <p><eit-switch ?checked=${this.active}></eit-switch>
+                <p><eit-switch ?checked=${this.active} @click=${this.changeActive}></eit-switch>
                 <wired-button @click=${this.changeActive}>Activar/ Desactivar</wired-button></p>
                 <p><slot></slot></p>
                 <p class="contador">${this.counter}</p>

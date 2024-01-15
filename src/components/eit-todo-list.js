@@ -42,7 +42,7 @@ export class EitTodoList extends LitElement {
 
     static properties = {
         completed: { type: Boolean },
-        todoItems: { 
+        todoItems: {
             type: Array,
         },
     }
@@ -114,7 +114,8 @@ export class EitTodoList extends LitElement {
     changeItemCompleted(item) {
         return () => {
             item.completed = !item.completed;
-            this.requestUpdate();
+            // this.requestUpdate(); //Para evitar actualizar la referencia al array
+            this.todoItems = [...this.todoItems];
         }
     }
 }

@@ -51,10 +51,10 @@ export class EitSwitch extends LitElement {
 
     toggle() {
         this.checked = !this.checked;
-        this.dispatchEvent(new CustomEvent('eit-switch-changed',{
+        this.dispatchEvent(new CustomEvent('eit-switch-changed', {
             bubbles: true,
             composed: true,
-            detail:{
+            detail: {
                 checked: this.checked
             }
         }))
