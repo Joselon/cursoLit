@@ -34,12 +34,14 @@ section {
     margin: 2rem 1rem;
 }
 
-#counterScaled {
-    position: relative;
-    left: -10%;
-}
-
 footer {
     background-color: rgb(73, 73, 72);
     padding: 1rem;
+}
+
+@media (max-width: 500px){
+    #counterScaled {
+        position: relative;
+        left: -10%;
+    }
 }
